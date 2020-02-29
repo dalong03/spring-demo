@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件 -->
+<mapper namespace="com.fb.webdemo.dao.LogDao">
+
+	<sql id="baseColumns">
+		type
+	</sql>
+	
+	<select id="get" resultType="log" parameterType="log">
+		select
+		<include refid="baseColumns"></include>
+		from sys_log
+		where id = #{id}
+	</select>
+	
+	<select id="findList" resultType="log" parameterType="log">
+		select
+		<include refid="baseColumns"></include>
+		from sys_log
+		<include refid="condition"></include>
+	</select>
+
+	<sql id="condition">
+		<where>
+			<if test="id neq null and id neq ''">
+				and id = #{id} 
+			</if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="log">
+		insert into sys_log
+		(
+		id,
+		type,
+		create_user,
+		create_date,
+		ex_synopsis,
+		exception,
+		ip_addr,
+		user_agent,
+		request_uri,
+		method,
+		params
+		)
+		values
+		(
+		#{id},
+		#{type},
+		#{createUser},
+		#{createDate},
+		#{exSynopsis},
+		#{exception},
+		#{ipAddr},
+		#{userAgent},
+		#{requestUri},
+		#{method},
+		#{params}
+		)
+	</insert>
+
+
+</mapper>

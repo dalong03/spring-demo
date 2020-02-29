@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件 -->
+<mapper namespace="com.fb.webdemo.dao.MenuDao">
+
+	<sql id="baseColumns">
+		name
+	</sql>
+	<sql id="joinColumns">
+	</sql>
+	
+	<select id="get" resultType="menu" parameterType="menu">
+		select
+		<include refid="baseColumns"></include>
+		<include refid="joinColumns"></include>
+		from menu
+		where id = #{id}
+	</select>
+	
+	<select id="findList" resultType="menu" parameterType="menu">
+		select
+		<include refid="baseColumns"></include>
+		<include refid="joinColumns"></include>
+		from menu
+		<include refid="condition"></include>
+	</select>
+
+	<sql id="condition">
+		<where>
+			<if test="id neq null and id neq ''">
+				and id = #{id} 
+			</if>
+			<if test="name neq null and name neq ''">
+				and name = #{name} 
+			</if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="menu">
+		insert into menu
+		(
+		id,
+		name,
+		birth
+		)
+		values
+		(
+		#{id},
+		#{name},
+		#{birth}
+		)
+	</insert>
+
+
+</mapper>

@@ -26,7 +26,7 @@ import com.fb.webdemo.common.multidatasource.annotation.DataSource;
 @Component
 public class MultiSourceExAop implements Ordered {
 
-    private Logger log = LoggerFactory.getLogger(this.getClass());
+    private Logger log = LoggerFactory.getLogger(MultiSourceExAop.class);
 
     @Pointcut(value = "@annotation(com.fb.webdemo.common.multidatasource.annotation.DataSource)")
     private void cut() {
@@ -47,12 +47,12 @@ public class MultiSourceExAop implements Ordered {
         Method currentMethod = target.getClass().getMethod(methodSignature.getName(), methodSignature.getParameterTypes());
 
         DataSource datasource = currentMethod.getAnnotation(DataSource.class);
-        if (datasource != null && StringUtils.hasText("datasource")) {
-            DataSourceContextHolder.setDataSourceType("datasource");
-            log.debug("设置数据源为：" + datasource);
+        if (datasource != null && StringUtils.hasText(datasource.value())) {
+            DataSourceContextHolder.setDataSourceType(datasource.value());
+            log.debug("设置数据源为：" + datasource.value());
         } else {
-            DataSourceContextHolder.setDataSourceType(DynamicDataSource.datasource1);
-            log.debug("设置数据源为：datasource1");
+            DataSourceContextHolder.setDataSourceType(DynamicDataSource.DATASOURCE1);
+            log.debug("设置数据源为：" + DynamicDataSource.DATASOURCE1);
         }
 
         try {

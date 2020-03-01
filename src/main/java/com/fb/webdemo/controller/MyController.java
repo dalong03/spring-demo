@@ -2,7 +2,6 @@ package com.fb.webdemo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -16,22 +15,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
 import com.fb.webdemo.common.controller.BaseController;
 import com.fb.webdemo.dao.MyDao;
 import com.fb.webdemo.entity.A;
-import com.fb.webdemo.entity.User;
-import com.fb.webdemo.service.MyService;
 import com.fb.webdemo.util.JwtTokenUtil;
 
-/**
- * 代码生成控制器
- */
 @Controller
 public class MyController extends BaseController {
 
-	@Autowired
-	private MyService myService;
 	@Autowired
 	private MyDao myDao;
 
@@ -52,13 +43,6 @@ public class MyController extends BaseController {
 	@RequestMapping("/t2")
 	public String t2(Model model, String a) {
 		A aaa = new A();
-		aaa.setId("1");
-		aaa.setName("tom");
-		List<A> list = myService.findList(aaa);
-		model.addAttribute("list", list);
-		
-		A a2 = myService.get("1");
-		model.addAttribute("a2", a2);
 		
 		return "t2";
 	}

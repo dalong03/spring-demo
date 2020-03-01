@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件 -->
+<mapper namespace="com.fb.webdemo.dao.CDao">
+
+	<sql id="baseColumns">
+		id, age
+	</sql>
+
+	<select id="get" resultType="c" parameterType="c">
+		select
+		<include refid="baseColumns"></include>
+		from c
+		where id = #{id}
+	</select>
+
+	<select id="findList" resultType="c" parameterType="c">
+		select
+		<include refid="baseColumns"></include>
+		from c
+		<include refid="condition"></include>
+	</select>
+
+	<sql id="condition">
+		<where>
+			<if test="id neq null and id neq ''">
+				and id = #{id}
+			</if>
+			<if test="age neq null">
+				and age = #{age}
+			</if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="c">
+		insert into c
+		(
+		id,
+		age
+		)
+		values
+		(
+		#{id},
+		#{age}
+		)
+	</insert>
+
+
+</mapper>

@@ -1,6 +1,6 @@
 package com.fb.webdemo.entity;
 
-public class A {
+public class C {
 
 	private String id;
 

@@ -20,7 +20,9 @@ public final class DbUtils {
 	static {
 		try {
 			Class.forName(DRIVER_CLASS);
+			logger.info("加载数据库驱动类");
 			c = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+			logger.info("与数据库建立连接");
 		} catch (ClassNotFoundException e) {
 			logger.error("加载数据库驱动类失败");
 			e.printStackTrace();
@@ -34,6 +36,7 @@ public final class DbUtils {
 	}
 
 	public static Connection getConnection() {
+		logger.info("获取Connection");
 		return c;
 	}
 
@@ -41,6 +44,7 @@ public final class DbUtils {
 		if (c != null) {
 			try {
 				c.close();
+				logger.info("关闭数据库连接");
 			} catch (SQLException e) {
 				logger.error("关闭数据库连接失败");
 				e.printStackTrace();
@@ -52,6 +56,7 @@ public final class DbUtils {
 		if (p != null) {
 			try {
 				p.close();
+				logger.info("关闭PreparedStatement");
 			} catch (SQLException e) {
 				logger.error("关闭sql语句失败");
 				e.printStackTrace();
@@ -63,6 +68,7 @@ public final class DbUtils {
 		if (r != null) {
 			try {
 				r.close();
+				logger.info("关闭ResultSet");
 			} catch (SQLException e) {
 				logger.error("关闭sql结果集失败");
 				e.printStackTrace();

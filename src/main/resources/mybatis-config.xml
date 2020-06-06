@@ -9,6 +9,9 @@
 
 		<!-- 设置当JDBC类型为空时,某些驱动程序 要指定值,default:OTHER，插入空值时不需要指定类型 -->
 		<setting name="jdbcTypeForNull" value="NULL" />
+		
+		<!-- 开启二级缓存 -->
+		<setting name="cacheEnabled" value="true" />
 	</settings>
 
 	<!-- 别名 -->
@@ -19,8 +22,8 @@
 	<plugins>
 		<!-- 分页插件 -->
 		<plugin interceptor="com.github.pagehelper.PageHelper">
-			<!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
-            <property name="helperDialect" value="oracle"/>
+			<!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库 -->
+			<property name="helperDialect" value="oracle" />
 		</plugin>
 	</plugins>
 </configuration>

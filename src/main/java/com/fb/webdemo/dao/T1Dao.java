@@ -1,8 +1,8 @@
 package com.fb.webdemo.dao;
 
 import com.fb.webdemo.common.dao.CrudDao;
-import com.fb.webdemo.entity.B;
+import com.fb.webdemo.entity.T1;
 
-public interface BDao extends CrudDao<B>{
+public interface T1Dao extends CrudDao<T1>{
 
 }

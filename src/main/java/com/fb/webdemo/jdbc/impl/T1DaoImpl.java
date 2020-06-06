@@ -11,33 +11,32 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.fb.webdemo.jdbc.ADao;
-import com.fb.webdemo.entity.A;
+import com.fb.webdemo.jdbc.T1Dao;
+import com.fb.webdemo.entity.T1;
 import com.fb.webdemo.util.DbUtils;
 
 @Repository
-public class ADaoImpl implements ADao {
+public class T1DaoImpl implements T1Dao {
 
-	private static final Logger logger = LoggerFactory.getLogger(ADaoImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(T1DaoImpl.class);
 
 	@Override
-	public A get(String id) {
+	public T1 get(String id) {
 		PreparedStatement ps = null;
 		try {
 			Connection cn = DbUtils.getConnection();
-			String sql = "select * from a where id = ?";
+			String sql = "select * from t1 where id = ?";
 			logger.info(sql);
 			logger.info(id);
 			ps = cn.prepareStatement(sql);
 			ps.setString(1, id);
 			ResultSet set = ps.executeQuery();
-			A a = null;
+			T1 t1 = null;
 			if (set.next()) {
-				a = new A();
-				a.setId(id);
-				a.setAge(set.getInt(2));
+				t1 = new T1();
+				t1.setId(id);
 			}
-			return a;
+			return t1;
 		} catch (SQLException e) {
 			logger.error("数据库操作失败");
 			e.printStackTrace();
@@ -48,24 +47,20 @@ public class ADaoImpl implements ADao {
 	}
 
 	@Override
-	public List<A> findList(A a) {
+	public List<T1> findList(T1 t1) {
 		PreparedStatement ps = null;
 		try {
 			Connection cn = DbUtils.getConnection();
-			StringBuffer sql = new StringBuffer("select * from a where 1 = 1 ");
-			if (a.getAge() != null) {
-				sql.append("and age = ").append(a.getAge());
-			}
+			StringBuffer sql = new StringBuffer("select * from t1 where 1 = 1 ");
 			logger.info(sql.toString());
-			logger.info(a.toString());
+			logger.info(t1.toString());
 			ps = cn.prepareStatement(sql.toString());
 			ResultSet set = ps.executeQuery();
-			List<A> list = new ArrayList<>();
-			A one = null;
+			List<T1> list = new ArrayList<>();
+			T1 one = null;
 			while (set.next()) {
-				one = new A();
+				one = new T1();
 				one.setId(set.getString(1));
-				one.setAge(set.getInt(2));
 				list.add(one);
 			}
 			return list;
@@ -79,16 +74,15 @@ public class ADaoImpl implements ADao {
 	}
 
 	@Override
-	public void save(A a) {
+	public void save(T1 t1) {
 		PreparedStatement ps = null;
 		try {
 			Connection cn = DbUtils.getConnection();
-			String sql = "insert into a(id, age) values(?, ?)";
+			String sql = "insert into t1(id, age) values(?, ?)";
 			logger.info(sql);
-			logger.info(a.toString());
+			logger.info(t1.toString());
 			ps = cn.prepareStatement(sql);
-			ps.setString(1, a.getId());
-			ps.setInt(2, a.getAge());
+			ps.setString(1, t1.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			logger.error("数据库操作失败");
@@ -100,17 +94,14 @@ public class ADaoImpl implements ADao {
 	}
 
 	@Override
-	public void update(A a) {
+	public void update(T1 t1) {
 		PreparedStatement ps = null;
 		try {
 			Connection cn = DbUtils.getConnection();
-			StringBuffer sql = new StringBuffer("update a");
-			if (a.getAge() != null) {
-				sql.append(" set age = ").append(a.getAge());
-			}
-			sql.append(" where id = ").append(a.getId());
+			StringBuffer sql = new StringBuffer("update t1");
+			sql.append(" where id = ").append(t1.getId());
 			logger.info(sql.toString());
-			logger.info(a.toString());
+			logger.info(t1.toString());
 			ps = cn.prepareStatement(sql.toString());
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -127,7 +118,7 @@ public class ADaoImpl implements ADao {
 		PreparedStatement ps = null;
 		try {
 			Connection cn = DbUtils.getConnection();
-			String sql = "delete from a where id = ?";
+			String sql = "delete from t1 where id = ?";
 			logger.info(sql.toString());
 			logger.info(id);
 			ps = cn.prepareStatement(sql);

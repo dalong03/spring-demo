@@ -16,39 +16,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fb.webdemo.common.controller.BaseController;
-import com.fb.webdemo.dao.MyDao;
-import com.fb.webdemo.entity.A;
+import com.fb.webdemo.dao.T1Dao;
+import com.fb.webdemo.entity.T1;
 import com.fb.webdemo.util.JwtTokenUtil;
 
 @Controller
-public class MyController extends BaseController {
+@RequestMapping("/t1")
+public class T1Controller extends BaseController {
 
 	@Autowired
-	private MyDao myDao;
+	private T1Dao t1Dao;
 
-	@RequestMapping("/t1")
-	public String t1(HttpSession session, Model model, A a) {
-		/*A a = myService.get(new A("1"));
-		if(a != null){
-			System.out.println(a.getName());
-		}*/
-		/*session.setAttribute("user", new User("1"));
-		if(true){
-			throw new RuntimeException("==");
-		}*/
+	@RequestMapping("/1")
+	public String t1(Model model, T1 t1) {
 		
 		return "t1";
 	}
 
-	@RequestMapping("/t2")
-	public String t2(Model model, String a) {
-		A aaa = new A();
-		
+	@RequestMapping("/2")
+	public String t2(Model model, String t1) {
+		T1 aaa = new T1();
 		return "t2";
 	}
 
-	@RequestMapping(value="t3")
-	public String t3(Model model,HttpServletRequest request, HttpServletResponse response, String a) throws IOException {
+	@RequestMapping(value="/3")
+	public String t3(Model model,HttpServletRequest request, HttpServletResponse response, String t1) throws IOException {
 		//前端传过来的回调函数名称
 	    String callback = request.getParameter("callback");
 	    //用回调函数名称包裹返回数据，这样，返回数据就作为回调函数的参数传回去了
@@ -58,9 +50,9 @@ public class MyController extends BaseController {
 		return "t3";
 	}
 	
-	@RequestMapping(value="t4")
+	@RequestMapping(value="/4")
 	@ResponseBody
-	public Map<String, Object> t4(Model model, A a, HttpServletRequest request, HttpServletResponse response) {
+	public Map<String, Object> t4(Model model, T1 t1, HttpServletRequest request, HttpServletResponse response) {
 		String token = request.getHeader("Authorization");
 		String uId = JwtTokenUtil.getUsernameFromToken(token);
 		System.out.println(uId);
@@ -68,7 +60,7 @@ public class MyController extends BaseController {
 		return baseMap;
 	}
 	
-	@RequestMapping(value="t5")
+	@RequestMapping(value="/5")
 	public void t5(Model model,HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setCharacterEncoding("UTF-8");
 	    response.setContentType("text/html;charset=UTF-8");

@@ -2,25 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 映射文件 -->
-<mapper namespace="com.fb.webdemo.dao.BDao">
+<mapper namespace="com.fb.webdemo.dao.HotnewsDao">
 
 	<!-- <cache /> -->
 	
 	<sql id="baseColumns">
-		id, age
+		id, title
 	</sql>
 
-	<select id="get" resultType="b" parameterType="b">
+	<select id="get" resultType="hotnews" parameterType="hotnews">
 		select
 		<include refid="baseColumns"></include>
-		from b
+		from hotnews
 		where id = #{id}
 	</select>
 
-	<select id="findList" resultType="b" parameterType="b">
+	<select id="findList" resultType="hotnews" parameterType="hotnews">
 		select
 		<include refid="baseColumns"></include>
-		from b
+		from hotnews
 		<include refid="condition"></include>
 	</select>
 
@@ -29,22 +29,22 @@
 			<if test="id neq null and id neq ''">
 				and id = #{id}
 			</if>
-			<if test="age neq null">
-				and age = #{age}
+			<if test="title neq null">
+				and title = #{title}
 			</if>
 		</where>
 	</sql>
 
-	<insert id="save" parameterType="b">
-		insert into b
+	<insert id="save" parameterType="hotnews">
+		insert into hotnews
 		(
 		id,
-		age
+		title
 		)
 		values
 		(
 		#{id},
-		#{age}
+		#{title}
 		)
 	</insert>
 

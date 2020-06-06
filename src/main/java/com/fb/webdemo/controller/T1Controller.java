@@ -2,12 +2,10 @@ package com.fb.webdemo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,14 +26,13 @@ public class T1Controller extends BaseController {
 	private T1Dao t1Dao;
 
 	@RequestMapping("/1")
-	public String t1(Model model, T1 t1) {
+	public String t1(Model model, HttpServletRequest request, HttpServletResponse response, T1 t1) {
 		
 		return "t1";
 	}
 
 	@RequestMapping("/2")
 	public String t2(Model model, String t1) {
-		T1 aaa = new T1();
 		return "t2";
 	}
 

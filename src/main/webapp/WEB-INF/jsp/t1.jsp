@@ -6,11 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport"
-	content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
 <title>测试</title>
-<link href="${ctxPath}/static/js/bootstrap-3.3.7-dist/css/bootstrap.min.css"
-	rel="stylesheet">
 <link href="${ctxPath}/static/js/plugins/layer/theme/default/layer.css"
 	rel="stylesheet">
 <style type="text/css">
@@ -27,22 +23,11 @@
 }
 </style>
 <script src="${ctxPath}/static/js/jquery-1.10.2/jquery.js"></script>
-<script src="${ctxPath}/static/js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<%-- <script src="${ctxPath}/static/js/jquery-1.8.3.min.js"></script> --%>
 <script src="${ctxPath}/static/js/common/Fb.js"></script>
 <script src="${ctxPath}/static/js/plugins/layer/layer.js"></script>
 <script type="text/javascript">
 
 	function f1() {
-		var a = 1;
-		console.info(a);
-		return;
-		$("#i1").val("111");
-		$("#i2").attr("checked", "checked");
-		$("#i3").attr("checked", "checked");
-		$("#i3").show();
-		$("#t1").val("222");
-		$("#d1").text("333");
 	}
 
 	function f2() {
@@ -82,33 +67,10 @@
 	<div>
 		<input value="f4()" type="button" onclick="f4()">
 	</div>
-	<!-- <form id="form1" action="" method="post"></form>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-4">1</div>
-			<div class="col-xs-4">2</div>
-			<div class="col-xs-4">3</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4">1</div>
-			<div class="col-xs-4">2</div>
-			<div class="col-xs-4">3</div>
-		</div>
-	</div> -->
-
 
 </body>
 <script type="text/javascript">
 	$(function() {
-		$.ajax({
-			type: "get",
-			url: "api/auth",
-			data: {username : "1", password : "1"},
-    		success: function(res){
-    			console.info(res.token);
-    			localStorage.token = res.token;
-    		}
-		});
 	});
 </script>
 </html>

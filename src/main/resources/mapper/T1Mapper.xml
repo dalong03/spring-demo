@@ -2,47 +2,53 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 映射文件 -->
-<mapper namespace="com.fb.webdemo.dao.CDao">
+<mapper namespace="com.fb.webdemo.dao.T1Dao">
 
 	<sql id="baseColumns">
-		id, age
+		name
 	</sql>
-
-	<select id="get" resultType="c" parameterType="c">
+	<sql id="joinColumns">
+	</sql>
+	
+	<select id="get" resultType="t1" parameterType="t1">
 		select
 		<include refid="baseColumns"></include>
-		from c
+		<include refid="joinColumns"></include>
+		from t1
 		where id = #{id}
 	</select>
-
-	<select id="findList" resultType="c" parameterType="c">
+	
+	<select id="findList" resultType="t1" parameterType="t1">
 		select
 		<include refid="baseColumns"></include>
-		from c
+		<include refid="joinColumns"></include>
+		from t1
 		<include refid="condition"></include>
 	</select>
 
 	<sql id="condition">
 		<where>
 			<if test="id neq null and id neq ''">
-				and id = #{id}
+				and id = #{id} 
 			</if>
-			<if test="age neq null">
-				and age = #{age}
+			<if test="name neq null and name neq ''">
+				and name = #{name} 
 			</if>
 		</where>
 	</sql>
 
-	<insert id="save" parameterType="c">
-		insert into c
+	<insert id="save" parameterType="t1">
+		insert into t1
 		(
 		id,
-		age
+		name,
+		birth
 		)
 		values
 		(
 		#{id},
-		#{age}
+		#{name},
+		#{birth}
 		)
 	</insert>
 

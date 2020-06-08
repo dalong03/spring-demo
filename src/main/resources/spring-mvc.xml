@@ -37,8 +37,9 @@
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 	<mvc:annotation-driven />
 
+	<!--对静态资源文件的访问-->
 	<mvc:resources mapping="/static/**" location="/static/" />
-
+	
 	<!-- <mvc:default-servlet-handler /> -->
 	<!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

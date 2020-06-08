@@ -64,7 +64,11 @@ public class T1Controller extends BaseController {
 		//前端传过来的回调函数名称
 	    String callback = request.getParameter("callback");
 	    //用回调函数名称包裹返回数据，这样，返回数据就作为回调函数的参数传回去了
-	    String result = callback + "(1)";
+	    String result = callback + "({\n" + 
+	    		"    \"code\": \"CA1998\",\n" + 
+	    		"    \"price\": 1780,\n" + 
+	    		"    \"tickets\": 50\n" + 
+	    		"})";
 	    PrintWriter out = response.getWriter();
 	    out.write(result);
 	    out.flush();

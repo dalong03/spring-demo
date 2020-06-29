@@ -7,13 +7,10 @@
 	<sql id="baseColumns">
 		name
 	</sql>
-	<sql id="joinColumns">
-	</sql>
 	
 	<select id="get" resultType="t1" parameterType="t1">
 		select
 		<include refid="baseColumns"></include>
-		<include refid="joinColumns"></include>
 		from t1
 		where id = #{id}
 	</select>
@@ -21,7 +18,13 @@
 	<select id="findList" resultType="t1" parameterType="t1">
 		select
 		<include refid="baseColumns"></include>
-		<include refid="joinColumns"></include>
+		from t1
+		<include refid="condition"></include>
+	</select>
+	
+	<select id="findPage" resultType="t1" parameterType="t1">
+		select
+		<include refid="baseColumns"></include>
 		from t1
 		<include refid="condition"></include>
 	</select>

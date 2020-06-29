@@ -16,12 +16,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fb.webdemo.common.controller.BaseController;
 import com.fb.webdemo.dao.T1Dao;
 import com.fb.webdemo.entity.T1;
+import com.fb.webdemo.service.T1Service;
 import com.fb.webdemo.util.JwtTokenUtil;
+import com.github.pagehelper.PageInfo;
 
 @Controller
 @RequestMapping("/t1")
 public class T1Controller extends BaseController {
 
+	@Autowired
+	private T1Service t1Service;
 	@Autowired
 	private T1Dao t1Dao;
 
@@ -74,5 +78,12 @@ public class T1Controller extends BaseController {
 	    out.flush();
 		out.close();
 	}
+	
+	@RequestMapping(value="")
+	@ResponseBody
+	public PageInfo<T1> findPage(Model model,HttpServletRequest request, HttpServletResponse response, T1 t1, PageInfo<T1> pageInfo) throws IOException {
+		return t1Service.findPage(t1, pageInfo);
+	}
+	
 	
 }

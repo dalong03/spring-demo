@@ -48,6 +48,14 @@ public interface CrudDao<T> extends BaseDao {
 	 * @return
 	 */
 	List<T> findAllList(T t);
+	
+	/**
+	  * 分页查询
+	 * 
+	 * @param T
+	 * @return
+	 */
+	List<T> findPage(T t);
 
 	/**
 	 * 保存数据

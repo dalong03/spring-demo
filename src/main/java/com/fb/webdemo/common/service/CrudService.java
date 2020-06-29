@@ -35,7 +35,7 @@ public interface CrudService<T> extends BaseService {
 	 * @param t
 	 * @return
 	 */
-	PageInfo<T> findPage(T t);
+	PageInfo<T> findPage(T t, PageInfo<T> pageInfo);
 	
 	/**
 	 * 获取多条数据

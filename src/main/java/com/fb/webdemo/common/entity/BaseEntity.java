@@ -3,7 +3,6 @@ package com.fb.webdemo.common.entity;
 import java.io.Serializable;
 
 import com.fb.webdemo.util.PropertiesUtils;
-import com.github.pagehelper.PageInfo;
 
 /**
  * 基本实体类
@@ -12,29 +11,20 @@ import com.github.pagehelper.PageInfo;
 public abstract class BaseEntity<T> implements Serializable {
 
 	private static final long serialVersionUID = 3954371210534946930L;
-	protected String id;
-	protected PageInfo<T> pageInfo;
-
-	public PageInfo<T> getPageInfo() {
-		return pageInfo;
-	}
-
-	public void setPageInfo(PageInfo<T> pageInfo) {
-		this.pageInfo = pageInfo;
-	}
+	protected Integer id;
 
 	public BaseEntity() {
 	}
 
-	public BaseEntity(String id) {
+	public BaseEntity(Integer id) {
 		this.id = id;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

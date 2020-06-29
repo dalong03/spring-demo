@@ -1,9 +1,7 @@
 package com.fb.webdemo.service;
 
+import com.fb.webdemo.common.service.CrudService;
 import com.fb.webdemo.entity.T1;
 
-public interface T1Service {
-	T1 get(String id);
-
-	T1 save(T1 t1);
+public interface T1Service extends CrudService<T1> {
 }

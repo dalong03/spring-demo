@@ -17,7 +17,7 @@ public class User extends DataEntity<User> {
 
 	}
 
-	public User(String id) {
+	public User(Integer id) {
 		super(id);
 	}
 

@@ -16,7 +16,7 @@ import com.github.pagehelper.PageInfo;
 
 @Service
 public class T1ServiceImpl extends AbstractCrudService<T1> implements T1Service {
-	@Autowired
+//	@Autowired
 	private T1Dao t1Dao;
 
 	@Override

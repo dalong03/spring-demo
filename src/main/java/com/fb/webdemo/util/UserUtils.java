@@ -6,7 +6,7 @@ import com.fb.webdemo.entity.User;
 public class UserUtils {
 	private static UserDao userDao = SpringContextHolder.getBean(UserDao.class);
 
-	public static User get(String id){
+	public static User get(Integer id){
 		User user = new User(id);
 		return userDao.get(user);
 	}

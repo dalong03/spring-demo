@@ -6,7 +6,7 @@ import com.fb.webdemo.entity.T1;
 
 public interface T1Dao {
 
-	T1 get(String id);
+	T1 get(Integer id);
 	
 	List<T1> findList(T1 a);
 	
@@ -14,6 +14,6 @@ public interface T1Dao {
 
 	void update(T1 t1);
 	
-	void delete(String id);
+	void delete(Integer id);
 
 }

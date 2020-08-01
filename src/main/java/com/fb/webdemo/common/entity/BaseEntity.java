@@ -13,10 +13,10 @@ public abstract class BaseEntity<T> implements Serializable {
 	private static final long serialVersionUID = 3954371210534946930L;
 	protected Integer id;
 
-	public BaseEntity() {
+	protected BaseEntity() {
 	}
 
-	public BaseEntity(Integer id) {
+	protected BaseEntity(Integer id) {
 		this.id = id;
 	}
 

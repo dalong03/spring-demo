@@ -24,9 +24,17 @@ import com.github.pagehelper.PageInfo;
 @RequestMapping("/t1")
 public class T1Controller extends BaseController {
 
-	@Autowired
+//	@Autowired
 	private T1Service t1Service;
-	@Autowired
+	public void setT1Service(T1Service t1Service) {
+		this.t1Service = t1Service;
+	}
+
+	public T1Service getT1Service() {
+		return t1Service;
+	}
+
+//	@Autowired
 	private T1Dao t1Dao;
 
 	@RequestMapping("/1")

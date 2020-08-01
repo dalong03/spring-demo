@@ -35,7 +35,6 @@ public class LogUtils {
 		User user = UserUtils.getUser();
 		if (user != null && user.getId() != null) {
 			Log log = new Log();
-			log.setId(UuidUtils.getUuid());
 			if (ex != null) {
 				if (ex instanceof BusinessException) {
 					log.setType(Log.TYPE_BUSI_EXCEPTION);

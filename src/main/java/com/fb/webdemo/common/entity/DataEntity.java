@@ -9,10 +9,10 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 
 	private static final long serialVersionUID = -189553143293410758L;
 
-	protected String createUser;// 创建人
-	protected Date createDate;// 创建时间
-	protected String updateUser;// 更新人
-	protected Date updateDate;// 更新时间
+	public Integer createUser;// 创建人
+	public Date createDate;// 创建时间
+	public Integer updateUser;// 更新人
+	public Date updateDate;// 更新时间
 
 	public DataEntity() {
 		super();
@@ -38,19 +38,19 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 		this.updateDate = updateDate;
 	}
 
-	public String getCreateUser() {
+	public Integer getCreateUser() {
 		return createUser;
 	}
 
-	public void setCreateUser(String createUser) {
+	public void setCreateUser(Integer createUser) {
 		this.createUser = createUser;
 	}
 
-	public String getUpdateUser() {
+	public Integer getUpdateUser() {
 		return updateUser;
 	}
 
-	public void setUpdateUser(String updateUser) {
+	public void setUpdateUser(Integer updateUser) {
 		this.updateUser = updateUser;
 	}
 

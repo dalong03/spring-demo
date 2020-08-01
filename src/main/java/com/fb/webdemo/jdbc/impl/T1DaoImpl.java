@@ -21,15 +21,14 @@ public class T1DaoImpl implements T1Dao {
 	private static final Logger logger = LoggerFactory.getLogger(T1DaoImpl.class);
 
 	@Override
-	public T1 get(String id) {
+	public T1 get(Integer id) {
 		PreparedStatement ps = null;
 		try {
 			Connection cn = DbUtils.getConnection();
 			String sql = "select * from t1 where id = ?";
-			logger.info(sql);
-			logger.info(id);
+			logger.debug(sql);
 			ps = cn.prepareStatement(sql);
-			ps.setString(1, id);
+			ps.setInt(1, id);
 			ResultSet set = ps.executeQuery();
 			T1 t1 = null;
 			if (set.next()) {
@@ -60,7 +59,7 @@ public class T1DaoImpl implements T1Dao {
 			T1 one = null;
 			while (set.next()) {
 				one = new T1();
-				one.setId(set.getString(1));
+				one.setId(set.getInt(1));
 				list.add(one);
 			}
 			return list;
@@ -82,7 +81,7 @@ public class T1DaoImpl implements T1Dao {
 			logger.info(sql);
 			logger.info(t1.toString());
 			ps = cn.prepareStatement(sql);
-			ps.setString(1, t1.getId());
+			ps.setInt(1, t1.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			logger.error("数据库操作失败");
@@ -114,15 +113,14 @@ public class T1DaoImpl implements T1Dao {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(Integer id) {
 		PreparedStatement ps = null;
 		try {
 			Connection cn = DbUtils.getConnection();
 			String sql = "delete from t1 where id = ?";
-			logger.info(sql.toString());
-			logger.info(id);
+			logger.debug(sql.toString());
 			ps = cn.prepareStatement(sql);
-			ps.setString(1, id);
+			ps.setInt(1, id);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			logger.error("数据库操作失败");
